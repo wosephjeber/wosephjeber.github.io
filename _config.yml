@@ -1,0 +1,11 @@
+# Site settings
+title: Joseph Weber
+email: wosephjeber@gmail.com
+description: Web developer, graphic designer, photographer. I blog about web development occasionally.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://wosephjeber.github.io" # the base hostname & protocol for your site
+twitter_username: wosephjeber
+github_username:  wosephjeber
+
+# Build settings
+markdown: kramdown
