@@ -116,7 +116,7 @@ section {
   @extend .nameplate;
   font-size: 3em;
   opacity: 1;
-  -webkit-animation: nameplate-in;
+  -webkit-animation: nameplate-in 2s 1;
   animation: nameplate-in 2s 1;
   
   @media (min-width: 30em) {
