@@ -15,6 +15,7 @@
       <div class="posts contained centered">
         {% for post in site.posts %}
           <div class="post">
+            <time>{{post.date | date: "%B %d, %Y"}}</time>
             <h3><a href="{{ post.url | prepend: site.baseurl }}">{{post.title}}</a></h3>
             {{ post.content | truncatewords: 40 }} <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
             <div class="tags">

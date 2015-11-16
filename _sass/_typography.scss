@@ -89,6 +89,13 @@ p {
   }
 }
 
+time {
+  color: $gray;
+  font-size: .875em;
+  font-family: 'Merriweather', serif;
+  font-style: italic;
+}
+
 .align-center {
   text-align: center;
 }
