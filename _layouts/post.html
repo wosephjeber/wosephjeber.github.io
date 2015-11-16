@@ -1,15 +1,22 @@
----
-layout: default
----
-<div class="post">
+<!DOCTYPE html>
+<html>
 
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
+  {% include head.html %}
 
-  <article class="post-content">
-    {{ content }}
-  </article>
+  <body>
+    <div class="viewport-half-height valign-center gray-bg bg-image" style="background-image: url('/images/hero-bg.jpg')">
+      <div class="contained centered align-center">
+        <h1 class="white">{{ page.title }}</h1>
+      </div>
+    </div>
+    <div class="post-content padded">
+      <div class="contained centered">
+        {{ content }}
+      </div>
+    </div>
 
-</div>
+    {% include footer.html %}
+
+  </body>
+
+</html>

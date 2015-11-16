@@ -1,0 +1,14 @@
+$gray: #eee;
+$blue: #304dbb;
+$green: #2ec97b;
+$light-gray: #dddcdb;
+
+$text-color: #333;
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
