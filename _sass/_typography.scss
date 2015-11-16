@@ -18,28 +18,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 40px;
-  
-  @media (min-width: 30em) {
-    font-size: 3em;
-  }
-}
-
-h2 {
   font-size: 2.125em;
-  border-bottom: solid 1px $gray;
+  margin-bottom: 40px;
   
   @media (min-width: 30em) {
     font-size: 2.5em;
   }
 }
 
-h3 {
+h2 {
   font-size: 1.75em;
+  padding-bottom: .25em;
+  border-bottom: solid 1px $gray;
   
   @media (min-width: 30em) {
-    font-size: 2em;
+    font-size: 1.875em;
+  }
+}
+
+h3 {
+  font-size: 1.25em;
+  
+  @media (min-width: 30em) {
+    font-size: 1.5em;
   }
 }
 
