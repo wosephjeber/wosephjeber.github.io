@@ -4,11 +4,7 @@
   {% include head.html %}
 
   <body>
-    <div class="viewport-half-height valign-center gray-bg bg-image" style="background-image: url('/images/hero-bg.jpg')">
-      <div class="contained centered align-center">
-        <h1 class="white">{{ page.title }}</h1>
-      </div>
-    </div>
+    {% include header.html %}
     <div class="post-content padded">
       <div class="contained centered">
         {{ content }}

@@ -1,3 +1,7 @@
+section {
+  position: relative;
+}
+
 .contained {
   max-width: 37.5em;
 }
@@ -24,11 +28,7 @@
 }
 
 .hero {
-  min-height: 600px;
-  min-height: calc(100vh - 80px);
-  background-color: #efeeea;
   background-size: 100% 100%;
-  padding: 40px;
 }
 
 .gray-bg {
@@ -56,11 +56,42 @@
 .nameplate {
   font-family: 'Garamond', 'Adobe Garamond', 'Merriweather', serif;
   font-weight: normal;
+  font-size: 2em;
+  line-height: 1.125;
+  display: inline-block;
+  padding-left: 40px;
+  padding-right: 40px;
+  
+  &.underlined {
+    padding-bottom: 10px;
+    border-bottom: solid 1px;
+  }
+  
+  a {
+    color: inherit;
+    
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+.large-nameplate {
+  @extend .nameplate;
   font-size: 4em;
   
   @media (min-width: 30em) {
     font-size: 6em;
+    padding-bottom: 30px;
   }
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 40px;
 }
 
 .bg-image {
@@ -81,4 +112,8 @@
 
 .float-none {
   float: none;
+}
+
+.clearfix {
+  @extend %clearfix;
 }
