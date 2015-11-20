@@ -439,3 +439,6 @@ footer {
   display: inline-block;
   margin-right: 8px;
   vertical-align: top; }
+  .tag a {
+    color: #fff;
+    text-decoration: none; }
