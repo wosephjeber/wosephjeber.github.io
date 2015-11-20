@@ -11,3 +11,5 @@ permalink: /blog/:title
 
 # Build settings
 markdown: kramdown
+
+exclude: [node_modules, Gruntfile.js, package.json]
