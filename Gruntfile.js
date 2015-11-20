@@ -21,7 +21,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('default', [
-    'buildcontrol:pages'
+    'buildcontrol:master'
   ]);
 
 };
