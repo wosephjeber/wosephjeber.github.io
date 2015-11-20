@@ -1,20 +1,81 @@
----
-layout: index
----
+<!DOCTYPE html>
+<html>
 
-<section class="padded">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Joseph Weber | Web Developer</title>
+  <meta name="description" content="Web developer, graphic designer, photographer. I blog about web development occasionally.">
+
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wosephjeber.github.io/">
+  <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+</head>
+
+
+  <body>
+    <section class="hero viewport-height padded valign-center align-center" style="background-image: url('/images/hero-bg.svg')">
+      <div class="contained centered align-center">
+        <h1 class="large-nameplate white">Joseph Weber</h1>
+      </div>
+    </section>
+    <section class="padded">
   <div class="posts contained centered">
-    {% for post in site.posts %}
+    
       <div class="post">
-        <time>{{post.date | date: "%B %d, %Y"}}</time>
-        <h3><a href="{{ post.url | prepend: site.baseurl }}">{{post.title}}</a></h3>
-        {{ post.content | truncatewords: 40 }} <a href="{{ post.url | prepend: site.baseurl }}">Read more</a>
+        <time>November 12, 2015</time>
+        <h3><a href="/blog/accessing-clipboard-data">Accessing clipboard data with Javascript</a></h3>
+        <p>You can access clipboard data after user input, but of course, it doesn’t work the same way in every browser. Internet Explorer, I’m looking at you.</p> <p>In Chrome, Safari, and Firefox, the <code>clipboardData</code> object is passed along with the event... <a href="/blog/accessing-clipboard-data">Read more</a>
         <div class="tags">
-          {% for tag in post.tags %}
-            <span class="tag">{{tag}}</span>
-          {% endfor %}
+          
+            <span class="tag">javascript</span>
+          
         </div>
       </div>
-    {% endfor %}
+    
+      <div class="post">
+        <time>June 18, 2015</time>
+        <h3><a href="/blog/vertically-center-aligning-content">Vertically Center Aligning Content with CSS</a></h3>
+        <p>One of the most frustrating limitations of less-than-modern browsers is their inability to easily vertically center align content. I’m not the first to write about this, and there are many different strategies out there already. I’ve tried several over the... <a href="/blog/vertically-center-aligning-content">Read more</a>
+        <div class="tags">
+          
+            <span class="tag">CSS</span>
+          
+            <span class="tag">vertical aligning</span>
+          
+        </div>
+      </div>
+    
+      <div class="post">
+        <time>May 25, 2015</time>
+        <h3><a href="/blog/semi-sticky-navigation">Semi-sticky Navigation</a></h3>
+        <p>I’ve been working on a proof-of-concept for a fixed navigation bar that is partially hidden/revealed in response to the scroll direction. I don’t know what the correct term is for this type of navigation interaction, so for now I’m calling... <a href="/blog/semi-sticky-navigation">Read more</a>
+        <div class="tags">
+          
+            <span class="tag">javascript</span>
+          
+            <span class="tag">navigation</span>
+          
+        </div>
+      </div>
+    
   </div>
 </section>
+
+
+    <footer>
+  <div class="float-left">
+    <small class="brand-gray">&copy; 2015 Joseph Weber</small>
+  </div>
+  <div class="float-right">
+    <small><a href="http://github.com/wosephjeber">Github</a> | <a href="http://twitter.com/wosephjeber">Twitter</a></small>
+  </div>
+</footer>
+
+
+  </body>
+
+</html>

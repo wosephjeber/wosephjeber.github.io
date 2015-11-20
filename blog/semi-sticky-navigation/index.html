@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Semi-sticky Navigation | Joseph Weber | Web Developer</title>
+  <meta name="description" content="I&#8217;ve been working on a proof-of-concept for a fixed navigation bar that is partiallyhidden/revealed in response to the scroll direction. I don&#8217;t ...">
+
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wosephjeber.github.io/blog/semi-sticky-navigation">
+  <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+</head>
+
+
+  <body>
+    <section class="hero viewport-half-height valign-center padded" style="background-image: url('/images/hero-bg.jpg')">
+  <!-- <div class="nav">
+    <div class="nameplate white">Joseph Weber</div>
+  </div> -->
+  <div class="contained centered align-center">
+    <div class="nameplate white underlined"><a href="http://wosephjeber.github.io">Joseph Weber</a></div>
+    <h1 class="white">Semi-sticky Navigation</h1>
+  </div>
+</section>
+
+    <div class="post-content padded">
+      <div class="contained centered">
+        <p>I’ve been working on a proof-of-concept for a fixed navigation bar that is partially
+hidden/revealed in response to the scroll direction. I don’t know what the correct term is
+for this type of navigation interaction, so for now I’m calling it “semi-sticky”.</p>
+
+<h2 id="the-backstory">The Backstory</h2>
+
+<p>We’re working on a fully-responsive redesign of opportunity.org, and one of the
+biggest challenges has been to redesign the navigation. The design we’ve landed
+on calls for two rows of links. The main navigation links and donate button are on the bottom
+row, and some secondary actions (view your donation basket, log in, sign up for
+our email newsletter, etc.) are on the top row. We want the navigation to be fixed,
+but the new design requires more vertical space than the original and we don’t want it
+to take up too much real estate as you are scrolling down the page.</p>
+
+<p>The solution we’re looking at involves hiding the row of secondary actions as
+the user scrolls down, and revealing the row as they scroll up. This way the
+main navigation is always visible, but the secondary actions are easily accessible.
+This is a similar interaction to the navigation bar on Facebook’s iPhone app,
+but the difference here is that only the top row is hidden/revealed with our implementation.
+The main navigation links are always visible and stick to the top of the window
+as the secondary row “scrolls” with the rest of the document.</p>
+
+<h2 id="the-result">The Result</h2>
+
+<p>The first step was to create a proof-of-concept. I’m pretty pleased that in
+just 2 hours, with 40 lines of Javascript, I was able to make it happen.</p>
+
+<p>The script attaches to the <code>scroll</code> event and  modifies the CSS <code>top</code> property of the
+<code>nav</code> element.</p>
+
+<p>I’ve defined three states that the navigation can have: <code>"fixed"</code>, <code>"scrolling"</code>,
+and <code>"hidden"</code>. The nav is <code>"fixed"</code> when the secondary links are fully visible,
+<code>"hidden"</code> when the secondary links are fully hidden, and <code>"scrolling"</code> when
+it’s in between those two states (i.e. the secondary links are being hidden/revealed).</p>
+
+<p>The scroll handler first checks to see if the designated scroll threshold has been
+reached. In this case, I’ve arbitrarily set the threshold to 50px, meaning that
+the hide/reveal interaction won’t start until the user has scrolled up or down
+50px.</p>
+
+<p>If the threshold has been reached, it determines whether the user is scrolling up
+or down. I’m accomplishing this by caching the previous scroll position in a variable
+and comparing it to the new scroll position after the scroll event fires. The difference
+between the two is stored in a variable named <code>delta</code>. The <code>delta</code> is positive when
+the user scrolls up and negative when the user scrolls down.</p>
+
+<p>If the user is scrolling down, and the nav state is not already <code>"hidden"</code>, then
+the <code>currentOffsetAmount</code> of the navigation element is updated according to the <code>delta</code>,
+being sure to max out at the <code>offsetLimit</code>. When the <code>currentOffsetAmount</code> reaches
+the <code>offsetLimit</code>, the state is changed to <code>"hidden"</code> and the threshold counter is reset.</p>
+
+<p>Likewise, if the user is scrolling up and the nav state is not already <code>"fixed"</code>, then
+the <code>currentOffsetAmount</code> is combined with the <code>delta</code>, bottoming out at <code>0</code>, i.e.
+no offset. When the <code>currentOffsetAmount</code> reaches 0, the state is changed to <code>"fixed"</code>
+and the threshold counter is reset.</p>
+
+<p>A CodePen of the proof-of-concept is below.</p>
+
+<p data-height="400" data-theme-id="15440" data-slug-hash="xGRGEL" data-default-tab="result" data-user="wosephjeber" class="codepen">See the Pen <a href="http://codepen.io/wosephjeber/pen/xGRGEL/">Semi-sticky Navigation</a> by Joe Weber (<a href="http://codepen.io/wosephjeber">@wosephjeber</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+        <time>May 25, 2015</time>
+      </div>
+    </div>
+    <div class="comments padded">
+      <div class="contained centered">
+        <div id="disqus_thread"></div>
+      </div>
+    </div>
+    <footer>
+  <div class="float-left">
+    <small class="brand-gray">&copy; 2015 Joseph Weber</small>
+  </div>
+  <div class="float-right">
+    <small><a href="http://github.com/wosephjeber">Github</a> | <a href="http://twitter.com/wosephjeber">Twitter</a></small>
+  </div>
+</footer>
+
+
+  </body>
+  
+  <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+
+    var disqus_config = function () {
+      this.page.url = /blog/semi-sticky-navigation; // Replace PAGE_URL with your page's canonical URL variable
+      //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//wosephjeber.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Accessing clipboard data with Javascript | Joseph Weber | Web Developer</title>
+  <meta name="description" content="You can access clipboard data after user input, but of course, it doesn&#8217;t work the same way in every browser. Internet Explorer, I&#8217;m looking at you.">
+
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wosephjeber.github.io/blog/accessing-clipboard-data">
+  <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+</head>
+
+
+  <body>
+    <section class="hero viewport-half-height valign-center padded" style="background-image: url('/images/hero-bg.jpg')">
+  <!-- <div class="nav">
+    <div class="nameplate white">Joseph Weber</div>
+  </div> -->
+  <div class="contained centered align-center">
+    <div class="nameplate white underlined"><a href="http://wosephjeber.github.io">Joseph Weber</a></div>
+    <h1 class="white">Accessing clipboard data with Javascript</h1>
+  </div>
+</section>
+
+    <div class="post-content padded">
+      <div class="contained centered">
+        <p>You can access clipboard data after user input, but of course, it doesn’t work the same way in every browser. Internet Explorer, I’m looking at you.</p>
+
+<p>In Chrome, Safari, and Firefox, the <code>clipboardData</code> object is passed along with the event data. So you can access it with:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// via jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.content-editable-div&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// plain Javascript (IE9+ and modern browsers)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.content-editable-div&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">;</span>
+<span class="p">});</span></code></pre></div>
+
+<p>In Internet Explorer, the event data doesn’t contain the clipboardData. However, the clipboardData is accessible via the <code>window</code> object. So, to normalize access to the clipboardData object, you could use:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// via jQuery</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.content-editable-div&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">clipboardData</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">originalEvent</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="c1">// plain Javascript (IE9+ and modern browsers)</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.content-editable-div&#39;</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;paste&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">clipboardData</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">;</span>
+<span class="p">});</span></code></pre></div>
+
+
+        <time>November 12, 2015</time>
+      </div>
+    </div>
+    <div class="comments padded">
+      <div class="contained centered">
+        <div id="disqus_thread"></div>
+      </div>
+    </div>
+    <footer>
+  <div class="float-left">
+    <small class="brand-gray">&copy; 2015 Joseph Weber</small>
+  </div>
+  <div class="float-right">
+    <small><a href="http://github.com/wosephjeber">Github</a> | <a href="http://twitter.com/wosephjeber">Twitter</a></small>
+  </div>
+</footer>
+
+
+  </body>
+  
+  <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+
+    var disqus_config = function () {
+      this.page.url = /blog/accessing-clipboard-data; // Replace PAGE_URL with your page's canonical URL variable
+      //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//wosephjeber.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</html>
