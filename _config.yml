@@ -12,7 +12,7 @@ permalink: /blog/:title
 # Build settings
 markdown: kramdown
 
-exclude: [node_modules, Gruntfile.js, package.json, hero-background.psd]
+exclude: [node_modules, Gruntfile.js, package.json, hero-background.psd, Gemfile, Gemfile.lock]
 
 # Tag pages
 tag_page_layout: tags
