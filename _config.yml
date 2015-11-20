@@ -13,3 +13,7 @@ permalink: /blog/:title
 markdown: kramdown
 
 exclude: [node_modules, Gruntfile.js, package.json, hero-background.psd]
+
+# Tag pages
+tag_page_layout: tags
+tag_page_dir: tag

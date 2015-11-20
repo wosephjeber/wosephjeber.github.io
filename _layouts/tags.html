@@ -4,7 +4,8 @@ layout: index
 
 <section class="padded">
   <div class="posts contained centered">
-    {% for post in site.posts %}
+    <h2>Posts tagged with <span class="tag">{{ page.tag }}</span></h2>
+    {% for post in site.tags[page.tag] %}
       <div class="post">
         <time>{{post.date | date: "%B %d, %Y"}}</time>
         <h3><a href="{{ post.url | prepend: site.baseurl }}">{{post.title}}</a></h3>
