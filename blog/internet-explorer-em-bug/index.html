@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="/images/favicon.png">
+
+  <title>Internet Explorer bug involving em units in before and after pseudo elements | Joseph Weber | Web Developer</title>
+  <meta name="description" content="I ran into a frustrating bug in Internet Explorer the other week, and I wantedto document it here, both for my own recollection and just in case someoneelse ...">
+
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wosephjeber.github.io/blog/internet-explorer-em-bug">
+  <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+</head>
+
+
+  <body>
+    <section class="hero viewport-half-height valign-center padded" style="background-image: url('/images/hero-bg.svg')">
+  <div class="contained centered align-center">
+    <a href="/" class="nameplate white bordered">Joseph Weber</a>
+    <h1 class="white">Internet Explorer bug involving em units in before and after pseudo elements</h1>
+  </div>
+</section>
+
+    <div class="post-content padded">
+      <div class="contained centered">
+        <p>I ran into a frustrating bug in Internet Explorer the other week, and I wanted
+to document it here, both for my own recollection and just in case someone
+else stumbles upon this post and finds it helpful.</p>
+
+<p>Basically, Internet Explorer versions 9-11 have a bug that ignores precedence rules
+and multiplies together the value of font-size declarations inside of <code>:before</code> and
+<code>:after</code> pseudo-elements when declared in <code>ems</code>. Take the following example:</p>
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">blockquote</span><span class="nd">:before</span> <span class="p">{</span>
+  <span class="k">content</span><span class="o">:</span> <span class="s2">&quot;\201c&quot;</span><span class="p">;</span>
+  <span class="k">font-size</span><span class="o">:</span> <span class="m">3.25em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="o">(</span><span class="nt">min-width</span><span class="o">:</span> <span class="nt">30em</span><span class="o">)</span> <span class="p">{</span>
+  <span class="nt">blockquote</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="k">font-size</span><span class="o">:</span> <span class="m">4.375em</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Here, all <code>blockquote</code> elements are preceded by a large opening quotation mark.
+On small screens (below 30em) the font size should be 3.25em, and on any
+screen larger than 30em the font size should be 4.375em. The second declaration
+should take precedence over the first. However, IE 9-11 multiplies the em values
+together, so you end up with a quotation mark that’s 14.21875em instead!</p>
+
+<p>There’s an <a href="https://connect.microsoft.com/IE/feedback/details/813398/ie-11-css-before-with-font-size-in-em-units-ignores-css-precedence-rules">open ticket for this bug</a>, but it doesn’t seem to be going anywhere. For now, the only
+solution is to use a unit other than ems. Booo Internet Explorer!</p>
+
+        <time>November 22, 2015</time>
+      </div>
+    </div>
+    <div class="comments padded">
+      <div class="contained centered">
+        <div id="disqus_thread"></div>
+      </div>
+    </div>
+    <footer>
+  <div class="float-left">
+    <small class="brand-gray">&copy; 2015 Joseph Weber</small>
+  </div>
+  <div class="float-right">
+    <small><a href="http://github.com/wosephjeber">Github</a> | <a href="http://twitter.com/wosephjeber">Twitter</a></small>
+  </div>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-32102543-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+  </body>
+  
+  <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+
+    var disqus_config = function () {
+      this.page.url = /blog/internet-explorer-em-bug; // Replace PAGE_URL with your page's canonical URL variable
+      //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//wosephjeber.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</html>
