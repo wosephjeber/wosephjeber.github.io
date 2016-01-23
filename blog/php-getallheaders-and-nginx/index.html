@@ -8,12 +8,12 @@
   
   <link rel="icon" href="/images/favicon.png">
 
-  <title>Today I Learned: Rendering View and Layout in Rails | Joseph Weber | Web Developer</title>
-  <meta name="description" content="It&#8217;s possible to specify both the view and the layout when calling the render method in a Rails controller. Most examples of using the render method (a...">
+  <title>Today I Learned: PHP getallheaders() method and NGINX | Joseph Weber | Web Developer</title>
+  <meta name="description" content="PHP has a useful getallheaders() method that returns a request&#8217;s HTTP headersas an array. I was using this for my organization&#8217;s CMS to check the...">
 
   <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://wosephjeber.github.io/blog/rails-render-view-and-layout">
+  <link rel="canonical" href="http://wosephjeber.github.io/blog/php-getallheaders-and-nginx">
   <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
 </head>
 
@@ -22,29 +22,27 @@
     <section class="hero viewport-half-height valign-center padded" style="background-image: url('/images/hero-bg.svg')">
   <div class="contained centered align-center">
     <a href="/" class="nameplate white bordered">Joseph Weber</a>
-    <h1 class="white">Today I Learned: Rendering View and Layout in Rails</h1>
+    <h1 class="white">Today I Learned: PHP getallheaders() method and NGINX</h1>
   </div>
 </section>
 
     <div class="post-content padded">
       <div class="contained centered">
-        <p>It’s possible to specify both the view and the layout when calling the <code>render</code> method in a Rails controller. Most examples of using the <code>render</code> method (at least that I’ve seen) only show how to specify the view, defaulting to the layout defined for the whole controller or application:</p>
+        <p>PHP has a useful <code>getallheaders()</code> method that returns a request’s HTTP headers
+as an array. I was using this for my organization’s CMS to check the origin of a
+request so I could enable CORS for whitelisted origins. It worked fine on my local
+machine, but when I deployed it to production it returned a 500 error. The only
+difference between my local installation of the CMS and the production environment
+is that I’m running Apache on my machine, but the server is running NGINX.</p>
 
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># renders the specified view within the layout defined at the controller level</span>
-<span class="n">render</span> <span class="s1">&#39;view_name&#39;</span></code></pre></div>
+<p>After some digging, I discovered that <code>getallheaders()</code> is an alias for
+<code>apache_request_headers()</code>, which until PHP version 5.4 was, as the method name
+suggest, only supported if PHP was running under an Apache web server. According
+to the <a href="http://php.net/manual/en/function.apache-request-headers.php">PHP manual</a>
+it’s supposed to now be supported under FastCGI, which is used by our CMS in production,
+so I think there must be something else at play here.</p>
 
-<p>But there may be times when you want a few controller methods to render a view within a different layout. You can accomplish that with:</p>
-
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># renders the specified view within the specified layout</span>
-<span class="n">render</span> <span class="s1">&#39;view_name&#39;</span><span class="p">,</span> <span class="ss">layout</span><span class="p">:</span> <span class="s1">&#39;layout_name&#39;</span></code></pre></div>
-
-<p>Or, if the view is named following Rails conventions (matching the controller method name), you can just use:</p>
-
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># render the default view within the specified layout</span>
-<span class="n">render</span> <span class="ss">layout</span><span class="p">:</span> <span class="s1">&#39;layout_name&#39;</span></code></pre></div>
-
-
-        <time>November 15, 2015</time>
+        <time>January 21, 2016</time>
       </div>
     </div>
     <div class="comments padded">
@@ -82,7 +80,7 @@
     */
 
     var disqus_config = function () {
-      this.page.url = /blog/rails-render-view-and-layout; // Replace PAGE_URL with your page's canonical URL variable
+      this.page.url = /blog/php-getallheaders-and-nginx; // Replace PAGE_URL with your page's canonical URL variable
       //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 
