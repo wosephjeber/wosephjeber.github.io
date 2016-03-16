@@ -125,13 +125,13 @@ section {
 .large-nameplate {
   @extend .nameplate;
   font-size: 3em;
+  padding-bottom: 0;
   opacity: 1;
   -webkit-animation: nameplate-in 2s 1;
   animation: nameplate-in 2s 1;
   
   @media (min-width: 30em) {
     font-size: 6em;
-    padding-bottom: 30px;
   }
 }
 

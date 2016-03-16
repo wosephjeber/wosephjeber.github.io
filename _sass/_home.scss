@@ -63,3 +63,69 @@
     text-decoration: none;
   }
 }
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fake-form-row {
+  margin-bottom: 20px;
+  
+  .fake-label {
+    display: inline-block;
+    color: #fff;
+    margin-right: 20px;
+    width: 100px;
+    text-align: right;
+  }
+  
+  .fake-input {
+    display: inline-block;
+    width: 200px;
+    background-color: #fff;
+    color: #555;
+    padding: 1em;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,.125);
+    border-radius: 3px;
+  }
+}
+
+.fake-submit {
+  display: inline-block;
+  background-color: #2ec97b;
+  width: 200px;
+  margin-left: 100px;
+  padding: 1em;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.125);
+  text-shadow: 0 1px 1px rgba(0,0,0,.25);
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+  position: relative;
+  
+  &:hover {
+    top: 2px;
+    box-shadow: none;
+  }
+}
+
+.cursor {
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    background-color: #555;
+    margin-left: 2px;
+    animation: blink 1.125s steps(2, start) infinite;
+  }
+}

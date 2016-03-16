@@ -6,13 +6,54 @@
   <body>
     <section class="hero viewport-height padded valign-center align-center" style="background-image: url('/images/hero-bg.svg')">
       <div class="contained centered align-center">
-        <h1 class="large-nameplate white">Joseph Weber</h1>
+        <!-- <h1 class="large-nameplate white">Joseph Weber</h1> -->
+        <!-- <div class="subheading white">
+          <span class="type-me"></span><span class="cursor">&nbsp;</span>
+        </div> -->
+        <div class="fake-form-row">
+          <div class="fake-label">
+            Name:
+          </div>
+          <div class="fake-input">
+            <span class="type-me-1"></span><span class="cursor">&nbsp;</span>
+          </div>
+        </div>
+        <div class="fake-form-row">
+          <div class="fake-label">
+            Occupation:
+          </div>
+          <div class="fake-input">
+            <span class="type-me-2"></span><span class="cursor">&nbsp;</span>
+          </div>
+        </div>
+        <div class="fake-submit">Submit</div>
       </div>
     </section>
+    
     {{ content }}
 
     {% include footer.html %}
-
+    
+    <script src="js/writer.js"></script>
+    <script>
+      var writer1 = new Writer('.type-me-1');
+      var writer2 = new Writer('.type-me-2');
+      
+      writer1.wait(1000)
+             .type('Joseph Weber');
+      
+      writer2.wait(3000)
+             .type('photographer')
+             .wait(500)
+             .backspace(12)
+             .wait(500)
+             .type('designer')
+             .wait(500)
+             .backspace(8)
+             .wait(500)
+             .type('web developer');
+      
+    </script>
   </body>
 
 </html>
