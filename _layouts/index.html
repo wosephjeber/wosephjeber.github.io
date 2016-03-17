@@ -14,16 +14,16 @@
           <div class="fake-label">
             Name:
           </div>
-          <div class="fake-input">
-            <span class="type-me-1"></span><span class="cursor">&nbsp;</span>
+          <div class="fake-input" id="name">
+            <span class="type-me"></span><span class="cursor">&nbsp;</span>
           </div>
         </div>
         <div class="fake-form-row">
           <div class="fake-label">
             Occupation:
           </div>
-          <div class="fake-input">
-            <span class="type-me-2"></span><span class="cursor">&nbsp;</span>
+          <div class="fake-input" id="occupation">
+            <span class="type-me"></span><span class="cursor">&nbsp;</span>
           </div>
         </div>
         <div class="fake-submit">Submit</div>
@@ -36,22 +36,49 @@
     
     <script src="js/writer.js"></script>
     <script>
-      var writer1 = new Writer('.type-me-1');
-      var writer2 = new Writer('.type-me-2');
+      var input1 = new FakeInput('#name');
+      var input2 = new FakeInput('#occupation');
+      var queue = new Queue();
       
-      writer1.wait(1000)
-             .type('Joseph Weber');
-      
-      writer2.wait(3000)
-             .type('photographer')
-             .wait(500)
-             .backspace(12)
-             .wait(500)
-             .type('designer')
-             .wait(500)
-             .backspace(8)
-             .wait(500)
-             .type('web developer');
+      queue.add(function() {
+        input1.focus();
+        this.wait(1000);
+      }).add(function() {
+        input1.type('Joseph Weber');
+      }).add(function() {
+        input1.blur()
+        this.wait(500);
+      }).add(function() {
+        input2.focus();
+        this.wait(500);
+      }).add(function(){
+        input2.type('photographer');
+      }).add(function() {
+        this.wait(500);
+      }).add(function() {
+        input2.backspace(12);
+      }).add(function() {
+        this.wait(500);
+      }).add(function() {
+        input2.type('designer');
+      }).add(function() {
+        this.wait(500);
+      }).add(function() {
+        input2.backspace(8);
+      }).add(function() {
+        this.wait(500);
+      }).add(function() {
+        input2.type('web developer');
+      }).add(function() {
+        input2.blur();
+        this.next();
+      }).add(function() {
+        var submit = document.querySelector('.fake-submit')
+        submit.classList.add('hover');
+        setTimeout(function() {
+          submit.classList.remove('hover');
+        }, 200);
+      }).start();
       
     </script>
   </body>

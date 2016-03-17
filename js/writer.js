@@ -1,3 +1,9 @@
+function triggerEvent(element, eventName) {
+  var e = document.createEvent('Event');
+  e.initEvent(eventName, true, true);
+  element.dispatchEvent(e);
+}
+
 var Queue = function() {
   this.running = false;
   this.tasks = [];
@@ -9,34 +15,60 @@ Queue.prototype.add = function(fn) {
 };
 
 Queue.prototype.start = function() {
+  var _this = this;
   if (this.tasks.length > 0) {
+    this.running = true;
+    
+    window.addEventListener('queueStepComplete', function(e) {
+      _this.next();
+    });
+    
     this.next();
   }
   return this;
 };
 
 Queue.prototype.next = function() {
-  this.tasks.shift().apply(this);
+  if (this.tasks.length > 0) {
+    this.tasks.shift().apply(this);
+  }
   return this;
 };
 
-var Writer = function(selector, options) {
+Queue.prototype.wait = function(time) {
+  setTimeout(function(){
+    triggerEvent(window, 'queueStepComplete');
+  }, time);
+  return this;
+};
+
+var FakeInput = function(selector, options) {
   this.element = document.querySelector(selector);
   this.typeSpeed = 75;
-  
-  this.queue = [];
+  this.queue = new Queue();
   
   var _this = this;
   
-  function type(text) {
+  this.focus = function() {
+    this.element.classList.add('focus');
+    return this;
+  };
+  
+  this.blur = function() {
+    this.element.classList.remove('focus');
+    return this;
+  };
+  
+  this.type = function(text) {
+    var _this = this;
     var i = 0,
         textArray = text.split(''),
         l = textArray.length,
         typeHandler = function() {
-          _this.element.innerHTML += textArray[i];
+          _this.element.querySelector('.type-me').innerHTML += textArray[i];
           i++;
           if (i === l) {
-            advanceQueue();
+            triggerEvent(window, 'queueStepComplete');
           } else {
             typeLoop();
           }
@@ -46,15 +78,17 @@ var Writer = function(selector, options) {
         };
         
     typeLoop();
-  }
+    
+    return this;
+  };
   
-  function backspace(times) {
+  this.backspace = function(times) {
     var i = 0,
         backspaceHandler = function() {
-          _this.element.innerHTML = _this.element.innerHTML.substring(0, _this.element.innerHTML.length - 1);
+          _this.element.querySelector('.type-me').innerHTML = _this.element.querySelector('.type-me').innerHTML.substring(0, _this.element.querySelector('.type-me').innerHTML.length - 1);
           i++;
           if (i === times) {
-            advanceQueue();
+            triggerEvent(window, 'queueStepComplete');
           } else {
             backspaceLoop();
           }
@@ -63,40 +97,7 @@ var Writer = function(selector, options) {
           setTimeout(backspaceHandler, _this.typeSpeed);
         };
     backspaceLoop();
-  }
-  
-  function wait(time) {
-    setTimeout(advanceQueue, time);
-  }
-  
-  function addToQueue(fn, params) {
-    _this.queue.push(function() {
-      fn.apply(_this, [params]);
-    });
-    if (_this.queue.length === 1) {
-      _this.queue[0]();
-    }
-  }
-  
-  function advanceQueue() {
-    _this.queue.shift();
-    if (_this.queue.length > 0) {
-      _this.queue[0]();
-    }
-  }
-  
-  this.type = function(text) {
-    addToQueue(type, text);
-    return this;
-  };
-  
-  this.backspace = function(times) {
-    addToQueue(backspace, times);
-    return this;
-  };
-  
-  this.wait = function(time) {
-    addToQueue(wait, time);
+    
     return this;
   };
 };

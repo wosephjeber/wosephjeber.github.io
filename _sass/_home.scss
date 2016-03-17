@@ -93,6 +93,15 @@
     text-align: left;
     box-shadow: 0 2px 5px rgba(0,0,0,.125);
     border-radius: 3px;
+    transition: box-shadow .3s;
+    
+    &.focus {
+      box-shadow: 0 2px 5px rgba(0,0,0,.375);
+      
+      .cursor {
+        visibility: visible;
+      }
+    }
   }
 }
 
@@ -110,8 +119,10 @@
   border-radius: 3px;
   font-weight: bold;
   position: relative;
+  top: 0;
+  transition: top .2s, box-shadow .2s;
   
-  &:hover {
+  &.hover {
     top: 2px;
     box-shadow: none;
   }
@@ -119,6 +130,8 @@
 
 .cursor {
   position: relative;
+  visibility: hidden;
+  
   &:before {
     content: '';
     position: absolute;
