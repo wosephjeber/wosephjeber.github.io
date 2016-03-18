@@ -44,7 +44,7 @@ Queue.prototype.wait = function(time) {
 
 var FakeInput = function(selector, options) {
   this.element = document.querySelector(selector);
-  this.typeSpeed = 75;
+  this.typeSpeed = 60;
   this.queue = new Queue();
   
   var _this = this;

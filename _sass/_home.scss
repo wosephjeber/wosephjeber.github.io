@@ -64,6 +64,27 @@
   }
 }
 
+@keyframes nameplate-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
+  
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  
+}
+
 @keyframes blink {
   from {
     opacity: 1;
@@ -73,56 +94,64 @@
   }
 }
 
-.fake-form-row {
-  margin-bottom: 20px;
+.fake-form {
+  width: 240px;
   
-  .fake-label {
-    display: inline-block;
-    color: #fff;
-    margin-right: 20px;
-    width: 100px;
-    text-align: right;
+  &.hide {
+    display: none;
   }
+}
+
+.fake-form-row {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.fake-label {
+  color: #fff;
+  margin-bottom: 5px;
+  font-size: .75em;
+}
+
+.fake-input {
+  background-color: #fff;
+  color: #555;
+  padding: 1em;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0,0,0,.125);
+  border-radius: 3px;
+  transition: box-shadow .3s;
   
-  .fake-input {
-    display: inline-block;
-    width: 200px;
-    background-color: #fff;
-    color: #555;
-    padding: 1em;
-    text-align: left;
-    box-shadow: 0 2px 5px rgba(0,0,0,.125);
-    border-radius: 3px;
-    transition: box-shadow .3s;
+  &.focus {
+    box-shadow: 0 2px 5px rgba(0,0,0,.375);
     
-    &.focus {
-      box-shadow: 0 2px 5px rgba(0,0,0,.375);
-      
-      .cursor {
-        visibility: visible;
-      }
+    .cursor {
+      visibility: visible;
     }
   }
 }
 
 .fake-submit {
-  display: inline-block;
   background-color: #2ec97b;
-  width: 200px;
-  margin-left: 100px;
   padding: 1em;
+  margin-top: 30px;
   color: #fff;
   box-shadow: 0 2px 5px rgba(0,0,0,.125);
   text-shadow: 0 1px 1px rgba(0,0,0,.25);
   text-transform: uppercase;
-  cursor: pointer;
+  text-align: center;
   border-radius: 3px;
   font-weight: bold;
   position: relative;
   top: 0;
-  transition: top .2s, box-shadow .2s;
+  transition: top .2s, box-shadow .2s, background-color .2s;
   
   &.hover {
+    background-color: #50D794;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+  
+  &.click {
     top: 2px;
     box-shadow: none;
   }
@@ -140,5 +169,50 @@
     background-color: #555;
     margin-left: 2px;
     animation: blink 1.125s steps(2, start) infinite;
+  }
+}
+
+.large-nameplate {
+  @extend .nameplate;
+  font-size: 2.375em;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  opacity: 1;
+  
+  @media (min-width: 30em) {
+    font-size: 4em;
+  }
+  
+  @media (min-width: 48em) {
+    font-size: 6em;
+  }
+}
+
+.name {
+  animation: nameplate-in 2s 1;
+  
+  &.hide {
+    display: none;
+  }
+  
+  .nameplate-title {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .75em;
+    letter-spacing: .625em;
+    position: relative;
+    
+    @media (min-width: 30em) {
+      font-size: 1em;
+      letter-spacing: 1em;
+      left: .5em;
+    }
+    
+    @media (min-width: 48em) {
+      font-size: 1.25em;
+      left: .5em;
+      letter-spacing: 1.25em;
+    }
   }
 }
