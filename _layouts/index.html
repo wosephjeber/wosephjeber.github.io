@@ -42,39 +42,39 @@
       var submit = document.querySelector('.fake-submit')
       
       queue.add(function() {
-        this.wait(1000);
+        this.wait(700);
       }).add(function() {
         input1.focus();
-        this.wait(1000);
+        this.wait(700);
       }).add(function() {
         input1.type('Joseph Weber');
       }).add(function() {
         input1.blur()
-        this.wait(500);
+        this.wait(300);
       }).add(function() {
         input2.focus();
-        this.wait(500);
+        this.wait(300);
       }).add(function(){
         input2.type('photographer');
       }).add(function() {
-        this.wait(500);
+        this.wait(300);
       }).add(function() {
         input2.backspace(12);
       }).add(function() {
-        this.wait(500);
+        this.wait(300);
       }).add(function() {
         input2.type('designer');
       }).add(function() {
-        this.wait(500);
+        this.wait(300);
       }).add(function() {
         input2.backspace(8);
       }).add(function() {
-        this.wait(500);
+        this.wait(300);
       }).add(function() {
         input2.type('web developer');
       }).add(function() {
         input2.blur();
-        this.wait(1000);
+        this.wait(700);
       }).add(function() {
         submit.classList.add('hover');
         this.wait(200);
@@ -84,11 +84,16 @@
         submit.classList.add('click');
         setTimeout(function() {
           submit.classList.remove('click');
-          _this.wait(1000);
+          _this.wait(700);
         }, 200);
       }).add(function() {
-        document.querySelector('.fake-form').classList.add('hide');
-        document.querySelector('.name').classList.remove('hide');
+        var form = document.querySelector('.fake-form');
+        form.style.opacity = 0;
+        form.style.transitionDuration = '500ms';
+        setTimeout(function() {
+          form.classList.add('hide');
+          document.querySelector('.name').classList.remove('hide');
+        }, 500);
       }).start();
       
     </script>

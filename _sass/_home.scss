@@ -198,21 +198,20 @@
   .nameplate-title {
     color: #fff;
     text-transform: uppercase;
-    font-weight: bold;
     font-size: .75em;
-    letter-spacing: .625em;
+    letter-spacing: .5625em;
     position: relative;
     
     @media (min-width: 30em) {
-      font-size: 1em;
-      letter-spacing: 1em;
+      font-size: .875em;
+      letter-spacing: 1.125em;
       left: .5em;
     }
     
     @media (min-width: 48em) {
-      font-size: 1.25em;
+      font-size: 1em;
       left: .5em;
-      letter-spacing: 1.25em;
+      letter-spacing: 1.625em;
     }
   }
 }
