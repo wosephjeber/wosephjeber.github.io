@@ -99,7 +99,11 @@ section {
 }
 
 .padded {
-  padding: 40px;
+  padding: 30px;
+  
+  @media (min-width: 30em) {
+    padding: 40px;
+  }
 }
 
 .float-left {
