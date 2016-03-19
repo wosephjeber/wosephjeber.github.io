@@ -15,15 +15,39 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="http://wosephjeber.github.io/">
   <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+  
+  <script src="https://use.typekit.net/goy5cly.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
 </head>
 
 
   <body>
-    <section class="hero viewport-height padded valign-center align-center" style="background-image: url('/images/hero-bg.svg')">
-      <div class="contained centered align-center">
-        <h1 class="large-nameplate white">Joseph Weber</h1>
+    <section class="hero viewport-height padded valign-center" style="background-image: url('/images/hero-bg.svg')">
+      <div class="contained centered">
+        <div class="name hide align-center">
+          <h1 class="large-nameplate white">Joseph Weber</h1>
+          <div class="nameplate-title">Web Developer</div>
+        </div>
+        <div class="fake-form">
+          <div class="fake-form-row">
+            <div class="fake-label">Name</div>
+            <div class="fake-input" id="name">
+              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+            </div>
+          </div>
+          <div class="fake-form-row">
+            <div class="fake-label">Occupation</div>
+            <div class="fake-input" id="occupation">
+              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+            </div>
+          </div>
+          <div class="fake-form-row">
+            <div class="fake-submit">Submit</div>
+          </div>
+        </div>
       </div>
     </section>
+    
     <section class="padded">
   <div class="posts contained centered">
     
@@ -40,11 +64,11 @@ is that I&#8217;m running Apache on my machine, but the server is running NGINX.
  <a href="/blog/php-getallheaders-and-nginx">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/php/">php</a></span>
+            <span class="tag"><a href="php">php</a></span>
           
-            <span class="tag"><a href="/tag/nginx/">nginx</a></span>
+            <span class="tag"><a href="nginx">nginx</a></span>
           
-            <span class="tag"><a href="/tag/today-i-learned/">today I learned</a></span>
+            <span class="tag"><a href="today I learned">today I learned</a></span>
           
         </div>
       </div>
@@ -58,9 +82,9 @@ with you:</p>
  <a href="/blog/smoothie-recipe">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/recipe/">recipe</a></span>
+            <span class="tag"><a href="recipe">recipe</a></span>
           
-            <span class="tag"><a href="/tag/javascript/">javascript</a></span>
+            <span class="tag"><a href="javascript">javascript</a></span>
           
         </div>
       </div>
@@ -75,11 +99,11 @@ else stumbles upon this post and finds it helpful.</p>
  <a href="/blog/internet-explorer-em-bug">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/internet-explorer/">internet explorer</a></span>
+            <span class="tag"><a href="internet explorer">internet explorer</a></span>
           
-            <span class="tag"><a href="/tag/bugs/">bugs</a></span>
+            <span class="tag"><a href="bugs">bugs</a></span>
           
-            <span class="tag"><a href="/tag/css/">css</a></span>
+            <span class="tag"><a href="css">css</a></span>
           
         </div>
       </div>
@@ -92,9 +116,9 @@ else stumbles upon this post and finds it helpful.</p>
  <a href="/blog/rails-render-view-and-layout">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/rails/">rails</a></span>
+            <span class="tag"><a href="rails">rails</a></span>
           
-            <span class="tag"><a href="/tag/today-i-learned/">today I learned</a></span>
+            <span class="tag"><a href="today I learned">today I learned</a></span>
           
         </div>
       </div>
@@ -107,7 +131,7 @@ else stumbles upon this post and finds it helpful.</p>
  <a href="/blog/accessing-clipboard-data">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/javascript/">javascript</a></span>
+            <span class="tag"><a href="javascript">javascript</a></span>
           
         </div>
       </div>
@@ -129,9 +153,9 @@ exceeds the height of its container.</p>
  <a href="/blog/vertically-center-aligning-content">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/css/">CSS</a></span>
+            <span class="tag"><a href="CSS">CSS</a></span>
           
-            <span class="tag"><a href="/tag/vertical-aligning/">vertical aligning</a></span>
+            <span class="tag"><a href="vertical aligning">vertical aligning</a></span>
           
         </div>
       </div>
@@ -146,9 +170,9 @@ for this type of navigation interaction, so for now I&#8217;m calling it &#8220;
  <a href="/blog/semi-sticky-navigation">Read more</a>
         <div class="tags">
           
-            <span class="tag"><a href="/tag/javascript/">javascript</a></span>
+            <span class="tag"><a href="javascript">javascript</a></span>
           
-            <span class="tag"><a href="/tag/navigation/">navigation</a></span>
+            <span class="tag"><a href="navigation">navigation</a></span>
           
         </div>
       </div>
@@ -177,7 +201,70 @@ for this type of navigation interaction, so for now I&#8217;m calling it &#8220;
 
 </script>
 
-
+    
+    <script src="js/writer.js"></script>
+    <script>
+      var input1 = new FakeInput('#name');
+      var input2 = new FakeInput('#occupation');
+      var queue = new Queue();
+      var submit = document.querySelector('.fake-submit')
+      
+      queue.add(function() {
+        this.wait(700);
+      }).add(function() {
+        input1.focus();
+        this.wait(700);
+      }).add(function() {
+        input1.type('Joseph Weber');
+      }).add(function() {
+        input1.blur()
+        this.wait(300);
+      }).add(function() {
+        input2.focus();
+        this.wait(300);
+      }).add(function(){
+        input2.type('photographer');
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.backspace(12);
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.type('designer');
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.backspace(8);
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.type('web developer');
+      }).add(function() {
+        input2.blur();
+        this.wait(700);
+      }).add(function() {
+        submit.classList.add('hover');
+        this.wait(200);
+      }).add(function() {
+        var _this = this;
+        submit.classList.remove('hover');
+        submit.classList.add('click');
+        setTimeout(function() {
+          submit.classList.remove('click');
+          _this.wait(700);
+        }, 200);
+      }).add(function() {
+        var form = document.querySelector('.fake-form');
+        form.style.opacity = 0;
+        form.style.transitionDuration = '500ms';
+        setTimeout(function() {
+          form.classList.add('hide');
+          document.querySelector('.name').classList.remove('hide');
+        }, 500);
+      }).start();
+      
+    </script>
   </body>
 
 </html>
