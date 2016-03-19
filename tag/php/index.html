@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="/images/favicon.png">
+
+  <title>Joseph Weber | Web Developer</title>
+  <meta name="description" content="Web developer, graphic designer, photographer. I blog about web development occasionally.">
+
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wosephjeber.github.io/tag/php/">
+  <link rel="alternate" type="application/rss+xml" title="Joseph Weber | Web Developer" href="http://wosephjeber.github.io/feed.xml" />
+  
+  <script src="https://use.typekit.net/goy5cly.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+</head>
+
+
+  <body>
+    <section class="hero viewport-height padded valign-center" style="background-image: url('/images/hero-bg.svg')">
+      <div class="contained centered">
+        <div class="name hide align-center">
+          <h1 class="large-nameplate white">Joseph Weber</h1>
+          <div class="nameplate-title">Web Developer</div>
+        </div>
+        <div class="fake-form">
+          <div class="fake-form-row">
+            <div class="fake-label">Name</div>
+            <div class="fake-input" id="name">
+              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+            </div>
+          </div>
+          <div class="fake-form-row">
+            <div class="fake-label">Occupation</div>
+            <div class="fake-input" id="occupation">
+              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+            </div>
+          </div>
+          <div class="fake-form-row">
+            <div class="fake-submit">Submit</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="padded">
+  <div class="posts contained centered">
+    <h2>Posts tagged with <span class="tag">php</span></h2>
+    
+      <div class="post">
+        <time>January 21, 2016</time>
+        <h3><a href="/blog/php-getallheaders-and-nginx">Today I Learned: PHP getallheaders() method and NGINX</a></h3>
+        <p>PHP has a useful <code>getallheaders()</code> method that returns a request’s HTTP headers as an array. I was using this for my organization’s CMS to check the origin of a request so I could enable CORS for whitelisted origins. It worked... <a href="/blog/php-getallheaders-and-nginx">Read more</a>
+        <div class="tags">
+          
+            <span class="tag"><a href="/tag/php/">php</a></span>
+          
+            <span class="tag"><a href="/tag/nginx/">nginx</a></span>
+          
+            <span class="tag"><a href="/tag/today-i-learned/">today I learned</a></span>
+          
+        </div>
+      </div>
+    
+  </div>
+</section>
+
+
+    <footer>
+  <div class="float-left">
+    <small class="brand-gray">&copy; 2016 Joseph Weber</small>
+  </div>
+  <div class="float-right">
+    <small><a href="http://github.com/wosephjeber">Github</a> | <a href="http://twitter.com/wosephjeber">Twitter</a></small>
+  </div>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-32102543-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    
+    <script src="js/writer.js"></script>
+    <script>
+      var input1 = new FakeInput('#name');
+      var input2 = new FakeInput('#occupation');
+      var queue = new Queue();
+      var submit = document.querySelector('.fake-submit')
+      
+      queue.add(function() {
+        this.wait(700);
+      }).add(function() {
+        input1.focus();
+        this.wait(700);
+      }).add(function() {
+        input1.type('Joseph Weber');
+      }).add(function() {
+        input1.blur()
+        this.wait(300);
+      }).add(function() {
+        input2.focus();
+        this.wait(300);
+      }).add(function(){
+        input2.type('photographer');
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.backspace(12);
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.type('designer');
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.backspace(8);
+      }).add(function() {
+        this.wait(300);
+      }).add(function() {
+        input2.type('web developer');
+      }).add(function() {
+        input2.blur();
+        this.wait(700);
+      }).add(function() {
+        submit.classList.add('hover');
+        this.wait(200);
+      }).add(function() {
+        var _this = this;
+        submit.classList.remove('hover');
+        submit.classList.add('click');
+        setTimeout(function() {
+          submit.classList.remove('click');
+          _this.wait(700);
+        }, 200);
+      }).add(function() {
+        var form = document.querySelector('.fake-form');
+        form.style.opacity = 0;
+        form.style.transitionDuration = '500ms';
+        setTimeout(function() {
+          form.classList.add('hide');
+          document.querySelector('.name').classList.remove('hide');
+        }, 500);
+      }).start();
+      
+    </script>
+  </body>
+
+</html>
