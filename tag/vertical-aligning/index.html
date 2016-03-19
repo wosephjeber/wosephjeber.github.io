@@ -22,53 +22,41 @@
 
 
   <body>
-    <section class="hero viewport-height padded valign-center" style="background-image: url('/images/hero-bg.svg')">
-      <div class="contained centered">
-        <div class="name hide align-center">
-          <h1 class="large-nameplate white">Joseph Weber</h1>
-          <div class="nameplate-title">Web Developer</div>
-        </div>
-        <div class="fake-form">
-          <div class="fake-form-row">
-            <div class="fake-label">Name</div>
-            <div class="fake-input" id="name">
-              <span class="type-me"></span><span class="cursor">&nbsp;</span>
-            </div>
-          </div>
-          <div class="fake-form-row">
-            <div class="fake-label">Occupation</div>
-            <div class="fake-input" id="occupation">
-              <span class="type-me"></span><span class="cursor">&nbsp;</span>
-            </div>
-          </div>
-          <div class="fake-form-row">
-            <div class="fake-submit">Submit</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="padded">
-  <div class="posts contained centered">
-    <h2>Posts tagged with <span class="tag">vertical aligning</span></h2>
-    
-      <div class="post">
-        <time>June 18, 2015</time>
-        <h3><a href="/blog/vertically-center-aligning-content">Vertically Center Aligning Content with CSS</a></h3>
-        <p>One of the most frustrating limitations of less-than-modern browsers is their inability to easily vertically center align content. I’m not the first to write about this, and there are many different strategies out there already. I’ve tried several over the... <a href="/blog/vertically-center-aligning-content">Read more</a>
-        <div class="tags">
-          
-            <span class="tag"><a href="/tag/css/">CSS</a></span>
-          
-            <span class="tag"><a href="/tag/vertical-aligning/">vertical aligning</a></span>
-          
-        </div>
-      </div>
+    <section class="hero viewport-half-height valign-center padded" style="background-image: url('/images/hero-bg.svg')">
+  <div class="contained centered align-center">
+    <a href="/" class="nameplate white bordered">Joseph Weber</a>
     
   </div>
 </section>
 
+    <div class="post-content padded">
+      <div class="contained centered">
+        <div class="posts contained centered">
+  <h2>Posts tagged with <span class="tag">vertical aligning</span></h2>
+  
+    <div class="post">
+      <time>June 18, 2015</time>
+      <h3><a href="/blog/vertically-center-aligning-content">Vertically Center Aligning Content with CSS</a></h3>
+      <p>One of the most frustrating limitations of less-than-modern browsers is their inability to easily vertically center align content. I’m not the first to write about this, and there are many different strategies out there already. I’ve tried several over the... <a href="/blog/vertically-center-aligning-content">Read more</a>
+      <div class="tags">
+        
+          <span class="tag"><a href="/tag/css/">CSS</a></span>
+        
+          <span class="tag"><a href="/tag/vertical-aligning/">vertical aligning</a></span>
+        
+      </div>
+    </div>
+  
+</div>
 
+        <time></time>
+      </div>
+    </div>
+    <div class="comments padded">
+      <div class="contained centered">
+        <div id="disqus_thread"></div>
+      </div>
+    </div>
     <footer>
   <div class="float-left">
     <small class="brand-gray">&copy; 2016 Joseph Weber</small>
@@ -89,70 +77,29 @@
 
 </script>
 
-    
-    <script src="js/writer.js"></script>
-    <script>
-      var input1 = new FakeInput('#name');
-      var input2 = new FakeInput('#occupation');
-      var queue = new Queue();
-      var submit = document.querySelector('.fake-submit')
-      
-      queue.add(function() {
-        this.wait(700);
-      }).add(function() {
-        input1.focus();
-        this.wait(700);
-      }).add(function() {
-        input1.type('Joseph Weber');
-      }).add(function() {
-        input1.blur()
-        this.wait(300);
-      }).add(function() {
-        input2.focus();
-        this.wait(300);
-      }).add(function(){
-        input2.type('photographer');
-      }).add(function() {
-        this.wait(300);
-      }).add(function() {
-        input2.backspace(12);
-      }).add(function() {
-        this.wait(300);
-      }).add(function() {
-        input2.type('designer');
-      }).add(function() {
-        this.wait(300);
-      }).add(function() {
-        input2.backspace(8);
-      }).add(function() {
-        this.wait(300);
-      }).add(function() {
-        input2.type('web developer');
-      }).add(function() {
-        input2.blur();
-        this.wait(700);
-      }).add(function() {
-        submit.classList.add('hover');
-        this.wait(200);
-      }).add(function() {
-        var _this = this;
-        submit.classList.remove('hover');
-        submit.classList.add('click');
-        setTimeout(function() {
-          submit.classList.remove('click');
-          _this.wait(700);
-        }, 200);
-      }).add(function() {
-        var form = document.querySelector('.fake-form');
-        form.style.opacity = 0;
-        form.style.transitionDuration = '500ms';
-        setTimeout(function() {
-          form.classList.add('hide');
-          document.querySelector('.name').classList.remove('hide');
-        }, 500);
-      }).start();
-      
-    </script>
+
   </body>
+  
+  <script>
+    /**
+    * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+
+    var disqus_config = function () {
+      this.page.url = '/tag/vertical-aligning/index.html'; // Replace PAGE_URL with your page's canonical URL variable
+      //this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+
+      s.src = '//wosephjeber.disqus.com/embed.js';
+
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 </html>
