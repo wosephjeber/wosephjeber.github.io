@@ -4,29 +4,35 @@
   {% include head.html %}
 
   <body>
-    <section class="hero viewport-height padded valign-center" style="background-image: url('/images/hero-bg.svg')">
-      <div class="contained centered">
-        <div class="name hide align-center">
-          <h1 class="large-nameplate white">Joseph Weber</h1>
-          <div class="nameplate-title">Web Developer</div>
-        </div>
-        <div class="fake-form">
-          <div class="fake-form-row">
-            <div class="fake-label">Name</div>
-            <div class="fake-input" id="name">
-              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+    <section class="hero viewport-height flex columns" style="background-image: url('/images/hero-bg.svg')">
+      <div class="valign-center flex-grow">
+        <div class="contained centered padded">
+          <div class="name hide align-center">
+            <div class="large-nameplate">
+              <img src="{{ site.baseurl }}/images/nameplate.svg" alt="Joseph Weber" />
             </div>
           </div>
-          <div class="fake-form-row">
-            <div class="fake-label">Occupation</div>
-            <div class="fake-input" id="occupation">
-              <span class="type-me"></span><span class="cursor">&nbsp;</span>
+          <div class="fake-form">
+            <div class="fake-form-row">
+              <div class="fake-label">Name</div>
+              <div class="fake-input" id="name">
+                <span class="type-me"></span><span class="cursor">&nbsp;</span>
+              </div>
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-label">Occupation</div>
+              <div class="fake-input" id="occupation">
+                <span class="type-me"></span><span class="cursor">&nbsp;</span>
+              </div>
+            </div>
+            <div class="fake-form-row">
+              <div class="fake-submit">Submit</div>
             </div>
           </div>
-          <div class="fake-form-row">
-            <div class="fake-submit">Submit</div>
-          </div>
         </div>
+      </div>
+      <div class="scrolldown">
+        <img src="{{ site.baseurl }}/images/arrow.svg" />
       </div>
     </section>
     

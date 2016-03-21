@@ -3,6 +3,7 @@ section {
 }
 
 .contained {
+  width: 100%;
   max-width: 37.5em;
 }
 
@@ -12,13 +13,13 @@ section {
 }
 
 .viewport-height {
-  min-height: 600px;
-  min-height: 100vh;
+  min-height: 400px;
+  height: 100vh;
 }
 
 .viewport-half-height {
-  min-height: 300px;
-  min-height: 50vh;
+  min-height: 200px;
+  height: 50vh;
 }
 
 .valign-center {
@@ -58,11 +59,12 @@ section {
 }
 
 .nameplate {
-  font-family: "Garamond", "adobe-garamond-pro", "Merriweather", serif;
-  font-weight: normal;
-  font-size: 1.5em;
-  line-height: 1.125;
   display: inline-block;
+  
+  img {
+    display: block;
+    width: 160px;
+  }
   
   &.underlined {
     padding-left: .75em;
@@ -74,7 +76,7 @@ section {
   &.bordered {
     border: solid 2px;
     border-radius: 3px;
-    padding: .375em .75em;
+    padding: .75em .75em .5em .75em;
   }
   
   a {
@@ -120,4 +122,16 @@ section {
 
 .clearfix {
   @extend %clearfix;
+}
+
+.flex {
+  display: flex;
+  
+  &.columns {
+    flex-direction: column;
+  }
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
