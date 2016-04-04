@@ -40,7 +40,9 @@
 
     {% include footer.html %}
     
+    <script src="js/smoothScroll.js"></script>
     <script src="js/writer.js"></script>
+    
     <script>
       var input1 = new FakeInput('#name');
       var input2 = new FakeInput('#occupation');
@@ -101,6 +103,11 @@
           document.querySelector('.name').classList.remove('hide');
         }, 500);
       }).start();
+      
+      
+      document.querySelector('.scrolldown').addEventListener('click', function() {
+        smoothScroll('#posts', 1000);
+      });
       
     </script>
   </body>
